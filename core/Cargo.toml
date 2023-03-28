@@ -1,0 +1,15 @@
+[package]
+name = "core"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+macros = { path = "../macros" }
+confy = { git = "https://github.com/rust-cli/confy" }
+serde = { version = "^1.0.158", features = ["derive"] }
+log = "^0.4"
+simplelog = "^0.12"
+lazy_static = "^1.4"
+directories-next = "^2.0.0"
+maplit = "1.0.2"

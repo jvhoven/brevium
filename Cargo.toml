@@ -1,0 +1,16 @@
+[workspace]
+members = [
+  "core",
+  "macros",
+  "cli",
+  "storage-fs",
+  "storage-tantivy"
+]
+
+[workspace.package]
+version = "0.0.1"
+authors = ["Jeffrey van Hoven <contact@jvhoven.nl"]
+edition = "2021"
+description = "Brevium is a package for the creation of brevium-like spectra."
+license = "MIT"
+rust-version = "1.68"

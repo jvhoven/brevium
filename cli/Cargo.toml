@@ -1,0 +1,13 @@
+[package]
+name = "cli"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+storage-fs = { path = "../storage-fs" }
+storage-tantivy = { path = "../storage-tantivy", optional = true }
+core = { path = "../core" }
+libloading = "0.7.0"
+maplit = "1.0.2"
+clap = { version = "4.1.13", features = ["derive"] }

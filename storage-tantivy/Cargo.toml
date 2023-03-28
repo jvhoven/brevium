@@ -1,0 +1,9 @@
+[package]
+name = "storage-tantivy"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+core = { path = "../core" }
+tantivy = { version = "^0.19.2", features = ["mmap"] }
