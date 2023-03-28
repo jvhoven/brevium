@@ -27,7 +27,7 @@ impl FileStorage {
 impl Storage for FileStorage {
     fn add_item(&self, item: &impl Saveable) -> Result<(), Box<dyn std::error::Error>> {
         let file_path = format!("{}/{}.txt", self.dir_path, "test");
-        let mut file = File::create(&file_path)?;
+        let mut file = File::create(file_path)?;
         file.write_all(item.get_content().as_bytes())?;
 
         Ok(())

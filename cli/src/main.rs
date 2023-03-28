@@ -26,7 +26,7 @@ enum Commands {
 }
 
 fn main() {
-    let config = CONFIG.read().expect("Should have config");
+    let _config = CONFIG.read().expect("Should have config");
     let storage = FileStorage::new().unwrap();
     let cli = Cli::parse();
 

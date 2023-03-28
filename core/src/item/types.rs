@@ -1,6 +1,6 @@
 use crate::item::code::CodeItem;
 use crate::item::text::TextItem;
-use core::str::FromStr;
+use std::str::FromStr;
 
 #[derive(Debug)]
 pub enum ItemTypes<'a> {

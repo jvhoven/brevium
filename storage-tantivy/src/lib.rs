@@ -1,14 +1,11 @@
 #[macro_use]
 extern crate tantivy;
 
-use core::config::CONFIG;
 use core::storage::Saveable;
 use core::storage::Storage;
-use tantivy::collector::TopDocs;
-use tantivy::query::QueryParser;
+
 use tantivy::schema::*;
 use tantivy::Index;
-use tantivy::ReloadPolicy;
 
 #[derive(Debug)]
 pub struct TantivyStorage {}
@@ -24,7 +21,7 @@ impl TantivyStorage {
 
         let dir = "/tmp/test";
         let schema = schema_builder.build();
-        let index = Index::create_in_dir(&dir, schema.clone()).expect("Could not initialzie index");
+        let index = Index::create_in_dir(dir, schema.clone()).expect("Could not initialzie index");
         let mut index_writer = index
             .writer(50_000_000)
             .expect("Could not initialize index writer");
@@ -32,10 +29,12 @@ impl TantivyStorage {
         let title = schema.get_field("title").unwrap();
         let content = schema.get_field("content").unwrap();
 
-        index_writer.add_document(doc!(
-            title => "Of Mice and Men",
-            content => "A few miles"
-        ));
+        index_writer
+            .add_document(doc!(
+                title => "Of Mice and Men",
+                content => "A few miles"
+            ))
+            .expect("Couldn't create document");
 
         index_writer
             .commit()
@@ -46,7 +45,7 @@ impl TantivyStorage {
 }
 
 impl Storage for TantivyStorage {
-    fn add_item(&self, item: &impl Saveable) -> Result<(), Box<dyn std::error::Error>> {
+    fn add_item(&self, _item: &impl Saveable) -> Result<(), Box<dyn std::error::Error>> {
         Ok(())
     }
 }

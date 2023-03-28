@@ -22,13 +22,12 @@ pub fn logger() {
             File::create(log_file).unwrap(),
         ),
     ])
-    .expect(
-        format!(
+    .unwrap_or_else(|_| {
+        panic!(
             "Could not write to log file at {}",
-            log_file.to_str().unwrap().to_string()
+            log_file.to_str().unwrap()
         )
-        .as_str(),
-    );
+    });
 
     info!("Logging to {}", log_file.to_str().unwrap());
 }
